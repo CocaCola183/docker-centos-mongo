@@ -1,0 +1,13 @@
+version: "2"
+services:
+  centos:
+    image: kivi/centos
+    container_name: centos
+    volumes:
+      - ./centos/centos-mongo-config:/data
+      - ./centos/mongo-source-rhel:/opt/mongo-source
+      # - ./centos/centos-mongo-data:/mongodb
+      - ./centos/centos-mongo-shell:/opt/shell
+    ports: 
+      - "9000-9001:9000-9001"
+    command: tail -f /var/log/yum.log
